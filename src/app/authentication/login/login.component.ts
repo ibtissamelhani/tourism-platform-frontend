@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
+import { NavbarComponent } from "../../shared/navbar/navbar.component";
 
 @Component({
   selector: 'app-login',
-  imports: [],
+  imports: [NavbarComponent],
   template: `
+  <app-navbar/>
   <div id="webcrumbs">
-  <div class="w-[480px] bg-gradient-to-br from-blue-900 to-yellow-500 rounded-lg shadow-xl overflow-hidden">
+  <div class="w-[480px] bg-gradient-to-br from-blue-900 to-yellow-500 rounded-lg shadow-xl overflow-hidden mx-auto">
       <div class="p-8">
           <div class="text-center mb-8">
               <h1 class="text-3xl font-bold text-white mb-2">Morocco Adventures</h1>
@@ -70,29 +72,6 @@ import { Component } from '@angular/core';
                       Sign In
                   </button>
               </form>
-              <div class="mt-6 pt-6 border-t border-white/10 text-center">
-                  <p class="text-white/80 text-sm mb-4">Or continue with</p>
-                  <div class="flex justify-center gap-4">
-                      <a
-                          href="#"
-                          class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-all duration-300 hover:scale-110 hover:rotate-3"
-                      >
-                          <i class="fa-brands fa-google text-white"></i>
-                      </a>
-                      <a
-                          href="#"
-                          class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-all duration-300 hover:scale-110 hover:rotate-3"
-                      >
-                          <i class="fa-brands fa-facebook-f text-white"></i>
-                      </a>
-                      <a
-                          href="#"
-                          class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-all duration-300 hover:scale-110 hover:rotate-3"
-                      >
-                          <i class="fa-brands fa-twitter text-white"></i>
-                      </a>
-                  </div>
-              </div>
           </div>
           <div class="mt-6 text-center">
               <p class="text-white/80 text-sm">
