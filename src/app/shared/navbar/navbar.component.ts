@@ -1,8 +1,12 @@
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
-  imports: [],
+  standalone: true,
+  imports: [
+    RouterLink
+  ],
   template: `
     <nav class="absolute top-0 left-0 right-0 z-20 px-8 py-6">
       <div class="flex justify-between items-center">
@@ -22,7 +26,8 @@ import { Component } from '@angular/core';
               href="#" class="block px-4 py-2 hover:bg-blue-50">English</a> <a href="#" class="block px-4 py-2 hover:bg-blue-50">Français</a>
               <a href="#" class="block px-4 py-2 hover:bg-blue-50">العربية</a> </div>
           </details>
-          <button
+          <button        
+          routerLink="/authentication/login"  
             class="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-full transition-colors duration-300 flex items-center">
             <span class="material-symbols-outlined mr-1">account_circle</span> Sign In </button>
         </div>
