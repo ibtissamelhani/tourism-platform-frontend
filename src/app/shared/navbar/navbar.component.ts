@@ -26,10 +26,15 @@ import { RouterLink } from '@angular/router';
               href="#" class="block px-4 py-2 hover:bg-blue-50">English</a> <a href="#" class="block px-4 py-2 hover:bg-blue-50">Français</a>
               <a href="#" class="block px-4 py-2 hover:bg-blue-50">العربية</a> </div>
           </details>
+          <button 
+          routerLink="/authentication/login" 
+          class="bg-transparent border border-white/60 hover:bg-white/10 text-white px-4 py-2 rounded-full transition-colors duration-300 flex items-center">
+          <span class="material-symbols-outlined mr-1">account_circle</span>
+          Sign In</button>
           <button        
-          routerLink="/authentication/login"  
+          routerLink="/authentication/register"  
             class="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-full transition-colors duration-300 flex items-center">
-            <span class="material-symbols-outlined mr-1">account_circle</span> Sign In </button>
+            <span class="material-symbols-outlined mr-1">add_circle</span> Sign Up </button>
         </div>
       </div>
     </nav>

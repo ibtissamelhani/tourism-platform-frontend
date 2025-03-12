@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
-import { NavbarComponent } from "../../shared/navbar/navbar.component";
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-login',
-  imports: [NavbarComponent],
+  imports: [ RouterLink],
   template: `
-  <app-navbar/>
   <div id="webcrumbs">
   <div class="w-[480px] bg-gradient-to-br from-blue-900 to-yellow-500 rounded-lg shadow-xl overflow-hidden mx-auto">
       <div class="p-8">
@@ -76,7 +75,7 @@ import { NavbarComponent } from "../../shared/navbar/navbar.component";
           <div class="mt-6 text-center">
               <p class="text-white/80 text-sm">
                   Don&#x27;t have an account?
-                  <a href="#" class="text-white font-medium ml-1 hover:underline transition-all duration-300"
+                  <a routerLink="/authentication/register" class="text-white font-medium ml-1 hover:underline transition-all duration-300"
                       >Register now</a
                   >
               </p>
