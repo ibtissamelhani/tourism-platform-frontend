@@ -10,7 +10,7 @@ import { RouterLink } from '@angular/router';
   template: `
     <nav class="absolute top-0 left-0 right-0 z-20 px-8 py-6">
       <div class="flex justify-between items-center">
-        <div routerLink="/" class="text-white text-2xl font-bold flex items-center"> <span
+        <div routerLink="/" class="text-white text-2xl font-bold flex items-center hover:cursor-pointer"> <span
           class="material-symbols-outlined mr-2 text-yellow-400">explore</span> DadesAdventures </div>
         <div class="flex items-center gap-8">
           <a href="#" class="text-white hover:text-yellow-400 transition-colors">Home</a>
