@@ -2,10 +2,10 @@ import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 @Component({
-  selector: 'app-login',
-  imports: [ RouterLink],
-  template: `
-  <div id="webcrumbs">
+    selector: 'app-login',
+    imports: [RouterLink],
+    template: `
+  <div class="container mx-auto  p-13">
   <div class="w-[480px] bg-gradient-to-br from-blue-900 to-yellow-500 rounded-lg shadow-xl overflow-hidden mx-auto">
       <div class="p-8">
           <div class="text-center mb-8">
@@ -55,20 +55,12 @@ import { RouterLink } from '@angular/router';
                           />
                       </div>
                   </div>
-                  <div class="mb-6">
-                      <label class="flex items-center">
-                          <input
-                              type="checkbox"
-                              class="w-4 h-4 rounded border-white/30 text-yellow-500 focus:ring-yellow-500 focus:ring-opacity-50 bg-white/20"
-                          />
-                          <span class="ml-2 text-sm text-white/80">Keep me signed in</span>
-                      </label>
-                  </div>
+                 
                   <button
-                      type="submit"
-                      class="w-full bg-white hover:bg-opacity-90 active:bg-opacity-80 text-blue-900 font-semibold py-2.5 rounded-lg transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] shadow-lg hover:shadow-xl"
-                  >
-                      Sign In
+                        type="submit"
+                        class="w-full bg-blue-900 hover:bg-blue-600 active:bg-blue-700 text-white font-semibold py-2.5 rounded-lg transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] shadow-lg hover:shadow-xl"
+                    >
+                        Sign In
                   </button>
               </form>
           </div>
@@ -84,7 +76,7 @@ import { RouterLink } from '@angular/router';
   </div>
 </div>
 `,
-  styles: ``
+    styles: ``
 })
 export class LoginComponent {
 

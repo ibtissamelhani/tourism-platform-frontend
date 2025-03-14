@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-register',
-  imports: [],
+  imports: [ RouterLink],
   template: `
-    <div class = "container mx-auto p-8 flex justify-center">
-      <div class = "w-[480px] bg-gradient-to-br from-blue-900 to-yellow-500 rounded-lg shadow-xl overflow-hidden">
+    <div class = "container mx-auto  p-7.5 flex justify-center">
+      <div class = "w-[700px] bg-gradient-to-br from-blue-900 to-yellow-500 rounded-lg shadow-xl overflow-hidden">
         <div class = "p-8">
           <div class = "text-center mb-8">
             <h1 class = "text-3xl font-bold text-white mb-2">DadesAdventures</h1>
@@ -48,7 +49,8 @@ import { Component } from '@angular/core';
                 </div>
               </div>
 
-              <div class = "mb-4">
+              <div class = "grid grid-cols-2 gap-4 mb-4">
+              <div >
                 <label htmlFor="email" class = "block text-white text-sm font-medium mb-1">Email</label>
                 <div class = "relative">
                 <span class = "material-symbols-outlined absolute left-3 top-1/2 transform -translate-y-1/2 text-white/70">
@@ -64,7 +66,7 @@ import { Component } from '@angular/core';
                 </div>
               </div>
 
-              <div class = "mb-4">
+              <div class >
                 <label htmlFor="phone" class = "block text-white text-sm font-medium mb-1">Phone Number</label>
                 <div class = "relative">
                 <span class = "material-symbols-outlined absolute left-3 top-1/2 transform -translate-y-1/2 text-white/70">
@@ -80,8 +82,10 @@ import { Component } from '@angular/core';
                 </div>
                 <p class = "text-white/60 text-xs mt-1">Include country code (e.g., +212 for Morocco)</p>
               </div>
+              </div>
 
-              <div class = "mb-4">
+              <div class = "grid grid-cols-2 gap-4 mb-4">
+              <div>
                 <label htmlFor="password" class = "block text-white text-sm font-medium mb-1">Password</label>
                 <div class = "relative">
                 <span class = "material-symbols-outlined absolute left-3 top-1/2 transform -translate-y-1/2 text-white/70">
@@ -98,7 +102,7 @@ import { Component } from '@angular/core';
                 <p class = "text-white/60 text-xs mt-1">Password must be at least 8 characters</p>
               </div>
 
-              <div class = "mb-4">
+              <div>
                 <label htmlFor="confirmPassword" class = "block text-white text-sm font-medium mb-1">Confirm Password</label>
                 <div class = "relative">
                 <span class = "material-symbols-outlined absolute left-3 top-1/2 transform -translate-y-1/2 text-white/70">
@@ -113,29 +117,23 @@ import { Component } from '@angular/core';
                   />
                 </div>
               </div>
-
-              <div class = "mb-6">
-                <label class = "flex items-center">
-                  <input type="checkbox" class = "w-4 h-4 rounded border-white/30 text-yellow-500 focus:ring-yellow-500 focus:ring-opacity-50 bg-white/20" />
-                  <span class = "ml-2 text-sm text-white/80">I agree to the <a href="#" class = "text-white underline hover:text-yellow-200 transition-colors">Terms of Service</a> and <a href="#" class = "text-white underline hover:text-yellow-200 transition-colors">Privacy Policy</a></span>
-                </label>
               </div>
 
+              <div class = "flex items-end justify-between">
+              
               <button
                 type="submit"
-                class = "w-full bg-white hover:bg-opacity-90 active:bg-opacity-80 text-blue-900 font-semibold py-2.5 rounded-lg transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] shadow-lg hover:shadow-xl"
+                class = "w-1/2  bg-blue-900 hover:bg-opacity-90 active:bg-opacity-80 text-white font-semibold py-2.5 rounded-lg transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] shadow-lg hover:shadow-xl hover:bg-blue-800"
               >
                 Create Account
               </button>
-            </form>
-          </div>
-
-          <div class = "mt-6 text-center">
-            <p class = "text-white/80 text-sm">
+              <p class = "text-white/80 text-sm">
               Already have an account?
-              <a href="#" class = "text-white font-medium ml-1 hover:underline transition-all duration-300">Sign in</a>
+              <a routerLink="/authentication/login" class = "text-white font-medium ml-1 hover:underline transition-all duration-300">Sign in</a>
             </p>
-          </div>
+              </div>
+            </form>
+          </div>          
         </div>
       </div>
     </div>
