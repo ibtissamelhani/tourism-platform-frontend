@@ -1,8 +1,8 @@
 import { Routes } from '@angular/router';
 import {LandingComponent} from './pages/landing/landing.component';
-import { LoginComponent } from './authentication/login/login.component';
+import { LoginComponent } from './features/authentication/login/login.component';
 import { AuthTemplateComponent } from './layout/auth-template/auth-template.component';
-import { RegisterComponent } from './authentication/register/register.component';
+import { RegisterComponent } from './features/authentication/register/register.component';
 import { AboutComponent } from './pages/about/about.component';
 
 export const routes: Routes = [
@@ -15,6 +15,6 @@ export const routes: Routes = [
     {path:'register', component:RegisterComponent},
   ]
   },
-  
+
 
 ];
