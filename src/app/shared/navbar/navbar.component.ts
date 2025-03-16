@@ -16,7 +16,7 @@ import { RouterLink } from '@angular/router';
           <a href="#" class="text-white hover:text-yellow-400 transition-colors">Home</a>
           <a href="#" class="text-white hover:text-yellow-400 transition-colors">Destinations</a>
           <a href="#" class="text-white hover:text-yellow-400 transition-colors">Activities</a>
-          <a href="#" class="text-white hover:text-yellow-400 transition-colors">About Us</a>
+          <a routerLink="about" class="text-white hover:text-yellow-400 transition-colors">About Us</a>
           <a href="#"class="text-white hover:text-yellow-400 transition-colors">Contact</a>
           <details class="relative">
             <summary class="list-none text-white cursor-pointer flex items-center"> <span
