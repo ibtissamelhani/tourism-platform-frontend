@@ -5,7 +5,7 @@ import { FooterComponent } from "../../shared/footer/footer.component";
 @Component({
   selector: 'app-about',
   imports: [NavbarComponent, FooterComponent],
-  template: './about.component.html',
+  templateUrl: './about.component.html',
   styles: ``
 })
 export class AboutComponent {
