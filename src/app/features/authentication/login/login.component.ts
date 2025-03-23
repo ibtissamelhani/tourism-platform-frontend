@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../../../core/services/auth.service';
+import { ToastService } from '../../../core/services/toast.service';
 
 @Component({
     selector: 'app-login',
@@ -15,8 +16,7 @@ import { AuthService } from '../../../core/services/auth.service';
               <h1 class="text-3xl font-bold text-white mb-2">Morocco Adventures</h1>
               <p class="text-white/80 text-sm">Sign in to reserve your next Moroccan adventure</p>
           </div>
-           
-        
+         
           <div class="bg-white/20 bg-opacity-10 backdrop-blur-sm  rounded-lg p-6 border border-white/20">
               <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
                   <div class="mb-4">
@@ -105,6 +105,7 @@ export class LoginComponent {
     private authService: AuthService, 
     private router: Router,
     private fb: FormBuilder,
+    private toastService: ToastService
 ){
     this.loginForm = this.fb.group({
         email: ['', [Validators.required, Validators.email]],
@@ -121,6 +122,7 @@ export class LoginComponent {
 
     this.authService.login(credentials).subscribe({
       next: (response) => {
+        this.toastService.success('Login Successful', 'Welcome');
         const userRole = this.authService.getUserRole();
         if (userRole === 'ROLE_ADMIN') {
           this.router.navigate(['/admin/dashboard']);
@@ -136,6 +138,7 @@ export class LoginComponent {
       error: (error) => {
         this.loading = false;
         this.errorMessage = error.error?.message || 'An error occurred during login check your credentials';
+        this.toastService.error('Login Failed', this.errorMessage);
       }
     });
   }
