@@ -1,9 +1,9 @@
-interface AuthenticationRequest {
+export interface AuthenticationRequest {
     email: string;
     password: string;
   }
   
-  interface AuthenticationResponse {
+export  interface AuthenticationResponse {
     token: string;
   }
 
