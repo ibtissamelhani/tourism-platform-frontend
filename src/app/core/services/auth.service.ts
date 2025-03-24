@@ -10,7 +10,7 @@ import { AuthenticationRequest, AuthenticationResponse } from '../models/Authent
 })
 export class AuthService {
 
-  private apiUrl = `${API_BASE_URL}/authenticate`;
+  private apiUrl = `${API_BASE_URL}/auth/authenticate`;
   private readonly TOKEN_KEY = 'token';
 
   constructor(private http: HttpClient) {}
