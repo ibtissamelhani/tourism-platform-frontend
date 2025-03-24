@@ -3,26 +3,36 @@ import { API_BASE_URL } from '../constants/constants';
 import { catchError, map, Observable, tap, throwError } from 'rxjs';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import {jwtDecode} from "jwt-decode";
-import { AuthenticationRequest, AuthenticationResponse } from '../models/Authentication';
+import { AuthenticationRequest, AuthenticationResponse, RegisterRequest } from '../models/Authentication';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  private apiUrl = `${API_BASE_URL}/auth/authenticate`;
+  private apiUrl = `${API_BASE_URL}/auth`;
   private readonly TOKEN_KEY = 'token';
 
   constructor(private http: HttpClient) {}
 
   login(credentials: AuthenticationRequest): Observable<AuthenticationResponse> {
-    return this.http.post<AuthenticationResponse>(this.apiUrl, credentials)
+    return this.http.post<AuthenticationResponse>(`${this.apiUrl}/authenticate`, credentials)
       .pipe(
         tap((response: AuthenticationResponse) => {
-          // Store token on successful login
           if (response && response.token) {
             localStorage.setItem(this.TOKEN_KEY, response.token);
           }
+        }),
+        catchError(this.handleError)
+      );
+  }
+
+  register(registerRequest: RegisterRequest): Observable<any> {
+    
+    return this.http.post(`${this.apiUrl}/register`, registerRequest)
+      .pipe(
+        tap((response: any) => {
+         console.log(response);
         }),
         catchError(this.handleError)
       );
