@@ -6,6 +6,7 @@ import { RegisterComponent } from './features/authentication/register/register.c
 import { AboutComponent } from './pages/about/about.component';
 import { DashboardComponent } from './features/admin/dashboard/dashboard.component';
 import { AdminLayoutComponent } from './layout/admin-layout/admin-layout.component';
+import { ActivitiesComponent } from './features/admin/activity/activities/activities.component';
 
 export const routes: Routes = [
 
@@ -19,7 +20,8 @@ export const routes: Routes = [
   },
   {path:'admin', component:AdminLayoutComponent,
     children:[
-      {path:'dashboard', component:DashboardComponent}
+      {path:'dashboard', component:DashboardComponent},
+      {path:'activities', component:ActivitiesComponent},
     ]
   },
 ];
