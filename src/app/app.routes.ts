@@ -8,6 +8,7 @@ import { DashboardComponent } from './features/admin/dashboard/dashboard.compone
 import { AdminLayoutComponent } from './layout/admin-layout/admin-layout.component';
 import { ActivitiesComponent } from './features/admin/activity/activities/activities.component';
 import { CreateActivityComponent } from './features/admin/activity/create-activity/create-activity.component';
+import { CategoriesComponent } from './features/admin/categories/categories.component';
 
 export const routes: Routes = [
 
@@ -24,6 +25,7 @@ export const routes: Routes = [
       {path:'dashboard', component:DashboardComponent},
       {path:'activities', component:ActivitiesComponent},
       {path:'create-activity', component:CreateActivityComponent},
+      {path:'categories', component:CategoriesComponent},
     ]
   },
 ];
