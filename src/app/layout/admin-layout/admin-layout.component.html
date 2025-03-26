@@ -1,0 +1,103 @@
+<div>
+  <div class="w-full rounded-lg shadow-lg overflow-hidden">
+    <div class="flex  w-full">
+      <div class="fixed top-0 left-0 z-40 w-64 h-screen  bg-blue-200  border-r border-gray-200 p-4 transition-all duration-300 hover:shadow-md">
+        <div class="flex items-center mb-8 space-x-2 font-bold text-xl">
+          <span class="material-symbols-outlined mr-2 text-yellow-500">explore</span> DadesAdventures
+        </div>
+        <nav>
+          <ul class="space-y-2">
+            <li>
+              <a [routerLink]="['/admin/dashboard']" routerLinkActive="rounded-4xl bg-blue-400/50"
+                class="flex items-center p-3 text-sm font-medium hover:rounded-4xl hover:bg-blue-400 text-black transition-all duration-200 ">
+                <span class="material-symbols-outlined mr-3">dashboard</span>
+                Dashboard
+              </a>
+            </li>
+            <li>
+              <a [routerLink]="['/admin/activities']" routerLinkActive="rounded-4xl bg-blue-400/50"
+                class="flex items-center p-3 text-sm font-medium rounded-lg  transition-all duration-200 hover:rounded-4xl hover:bg-blue-400 text-black">
+                <span class="material-symbols-outlined mr-3">campaign</span>
+                Activities
+              </a>
+            </li>
+            <li>
+              <a [routerLink]="['/admin/categories']" routerLinkActive="rounded-4xl bg-blue-400/50"
+                class="flex items-center p-3 text-sm font-medium rounded-lg  transition-all duration-200 hover:rounded-4xl hover:bg-blue-400 text-black">
+                <span class="material-symbols-outlined mr-3">category</span>
+                Categories
+              </a>
+            </li>
+            <li>
+              <a [routerLink]="" routerLinkActive="rounded-4xl bg-blue-400/50"
+                class="flex items-center p-3 text-sm font-medium rounded-lg hover:rounded-4xl hover:bg-blue-400 text-black  transition-all duration-200 ">
+                <span class="material-symbols-outlined mr-3">groups</span>
+                Users
+              </a>
+            </li>
+            <li>
+              <a [routerLink]="" routerLinkActive="rounded-4xl bg-blue-400/50"
+                class="flex items-center p-3 text-sm font-medium rounded-lg  transition-all duration-200 hover:rounded-4xl hover:bg-blue-400 text-black">
+                <span class="material-symbols-outlined mr-3">insights</span>
+                Reservations
+              </a>
+            </li>
+            <li>
+              <a [routerLink]="" routerLinkActive="rounded-4xl bg-blue-400/50"
+                class="flex items-center p-3 text-sm font-medium rounded-lg  transition-all duration-200 hover:rounded-4xl hover:bg-blue-400 text-black">
+                <span class="material-symbols-outlined mr-3">pin_drop</span>
+                Places
+              </a>
+            </li>
+            <li>
+              <a [routerLink]="" routerLinkActive="rounded-4xl bg-blue-400/50"
+                class="flex items-center p-3 text-sm font-medium rounded-lg  transition-all duration-200 hover:rounded-4xl hover:bg-blue-400 text-black">
+                <span class="material-symbols-outlined mr-3">settings</span>
+                Settings
+              </a>
+            </li>
+            <li>
+              <a [routerLink]="" routerLinkActive="rounded-4xl bg-blue-400/50"
+                class="flex items-center p-3 text-sm font-medium rounded-lg  transition-all duration-200 hover:rounded-4xl hover:bg-blue-400 text-black">
+                <span class="material-symbols-outlined mr-3">logout</span>
+                Logout
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <div class="w-6xl ml-64 flex-1 p-6">
+        <div class="flex justify-between items-center bg-blue-200 p-5 rounded-2xl mb-6">
+            <div>
+                <h2 class="text-2xl font-bold">Analytics Dashboard</h2>
+            </div>
+            <div class="flex items-center space-x-4">
+                <div class="flex items-center space-x-2">
+                    <img src="https://i.pinimg.com/736x/c0/74/9b/c0749b7cc401421662ae901ec8f9f660.jpg" alt="Profile"
+                        class="w-10 h-10 rounded-full border-2 border-primary-200" />
+                    <details class="relative">
+                        <summary class="list-none flex items-center cursor-pointer">
+                            <span class="text-sm font-medium">Sarah Johnson</span>
+                            <span class="material-symbols-outlined text-gray-500 ml-1">arrow_drop_down</span>
+                        </summary>
+                        <div
+                            class="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-2 z-10 border border-gray-100">
+                            <a href="https://webcrumbs.cloud/placeholder"
+                                class="block px-4 py-2 text-sm hover:bg-primary-50">Your Profile</a>
+                            <a href="https://webcrumbs.cloud/placeholder"
+                                class="block px-4 py-2 text-sm hover:bg-primary-50">Settings</a>
+                            <a href="https://webcrumbs.cloud/placeholder"
+                                class="block px-4 py-2 text-sm hover:bg-primary-50">Help Center</a>
+                            <hr class="my-1 border-gray-100" />
+                            <a href="https://webcrumbs.cloud/placeholder"
+                                class="block px-4 py-2 text-sm text-red-600 hover:bg-red-50">Sign out</a>
+                        </div>
+                    </details>
+                </div>
+            </div>
+        </div>
+      <router-outlet></router-outlet>
+    </div>
+    </div>
+  </div>
+</div>
