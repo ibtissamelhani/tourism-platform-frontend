@@ -9,6 +9,7 @@ import { AdminLayoutComponent } from './layout/admin-layout/admin-layout.compone
 import { ActivitiesComponent } from './features/admin/activity/activities/activities.component';
 import { CreateActivityComponent } from './features/admin/activity/create-activity/create-activity.component';
 import { CategoriesComponent } from './features/admin/categories/categories.component';
+import { PlacesComponent } from './features/admin/place/places/places.component';
 
 export const routes: Routes = [
 
@@ -26,6 +27,7 @@ export const routes: Routes = [
       {path:'activities', component:ActivitiesComponent},
       {path:'create-activity', component:CreateActivityComponent},
       {path:'categories', component:CategoriesComponent},
+      {path:'places', component:PlacesComponent},
     ]
   },
 ];
