@@ -4,6 +4,9 @@ import { LoginComponent } from './features/authentication/login/login.component'
 import { AuthTemplateComponent } from './layout/auth-template/auth-template.component';
 import { RegisterComponent } from './features/authentication/register/register.component';
 import { AboutComponent } from './pages/about/about.component';
+import { DashboardComponent } from './features/admin/dashboard/dashboard.component';
+import { AdminLayoutComponent } from './layout/admin-layout/admin-layout.component';
+import { ActivitiesComponent } from './features/admin/activity/activities/activities.component';
 
 export const routes: Routes = [
 
@@ -15,6 +18,10 @@ export const routes: Routes = [
     {path:'register', component:RegisterComponent},
   ]
   },
-
-
+  {path:'admin', component:AdminLayoutComponent,
+    children:[
+      {path:'dashboard', component:DashboardComponent},
+      {path:'activities', component:ActivitiesComponent},
+    ]
+  },
 ];
