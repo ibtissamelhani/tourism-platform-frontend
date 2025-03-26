@@ -3,7 +3,7 @@ import { API_BASE_URL } from '../constants/constants';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Page } from '../models/Page';
-import { ActivityResponse } from '../models/Activity';
+import { ActivityRequest, ActivityResponse } from '../models/Activity';
 
 @Injectable({
   providedIn: 'root'
@@ -25,5 +25,9 @@ export class ActivityService{
         sort: sort
       }
     });
+  }
+
+  createActivity(activityRequest: ActivityRequest): Observable<ActivityResponse> {
+    return this.http.post<ActivityResponse>(this.apiUrl, activityRequest);
   }
 }

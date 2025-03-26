@@ -7,6 +7,8 @@ import { AboutComponent } from './pages/about/about.component';
 import { DashboardComponent } from './features/admin/dashboard/dashboard.component';
 import { AdminLayoutComponent } from './layout/admin-layout/admin-layout.component';
 import { ActivitiesComponent } from './features/admin/activity/activities/activities.component';
+import { CreateActivityComponent } from './features/admin/activity/create-activity/create-activity.component';
+import { CategoriesComponent } from './features/admin/categories/categories.component';
 
 export const routes: Routes = [
 
@@ -22,6 +24,8 @@ export const routes: Routes = [
     children:[
       {path:'dashboard', component:DashboardComponent},
       {path:'activities', component:ActivitiesComponent},
+      {path:'create-activity', component:CreateActivityComponent},
+      {path:'categories', component:CategoriesComponent},
     ]
   },
 ];

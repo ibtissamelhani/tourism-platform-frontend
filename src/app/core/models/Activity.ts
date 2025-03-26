@@ -15,6 +15,24 @@ export interface ActivityResponse {
     guideEmail: string;
     imageUrls: string[];
   }
+  export interface ActivityRequest {
+    name: string;
+    description: string;
+    capacity: number;
+    price: number;
+    date: Date;
+    registrationDeadline: Date; 
+    categoryId: string; 
+    placeId: string;
+    status: ActivityStatus;
+    guideId?: string; 
+    availability?: boolean;
+    imageUrls?: string[];
+  }
+
   
-  export type ActivityStatus = 'ACTIVE' | 'CANCELED' ; 
+  export enum ActivityStatus {
+      ACTIVE = 'ACTIVE',
+      CANCELED = 'CANCELED'
+  }
   
