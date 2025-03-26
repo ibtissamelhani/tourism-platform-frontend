@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-activities',
   imports: [],
-  templateUrl: './activities.component.html',
+  template: ``,
   styles: ``
 })
 export class ActivitiesComponent {
