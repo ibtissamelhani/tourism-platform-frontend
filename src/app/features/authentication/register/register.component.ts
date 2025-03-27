@@ -13,8 +13,8 @@ import { ToastService } from '../../../core/services/toast.service';
     CommonModule
   ],
   template: `
-    <div class = "container mx-auto  p-7.5 flex justify-center">
-      <div class = "w-[700px] bg-gradient-to-br from-blue-900 to-yellow-500 rounded-lg shadow-xl overflow-hidden">
+    <div class = "container mx-auto">
+      <div class = "w-[700px] bg-gradient-to-br from-blue-900 to-yellow-500 rounded-lg shadow-xl overflow-hidden m-auto">
         <div class = "p-8">
           <div class = "text-center mb-8">
             <h1 class = "text-3xl font-bold text-white mb-2">DadesAdventures</h1>
