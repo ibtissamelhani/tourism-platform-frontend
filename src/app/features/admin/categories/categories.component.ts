@@ -119,6 +119,7 @@ export class CategoriesComponent{
       this.categoryService.deleteCategory(id).subscribe({
         next: (res) => {
           this.toastService.success('Success', res);
+          this.categories$ = this.categoryService.getAll();
         },
         error: (err) => {
           const msg = err.error?.message || err.error || 'Delete failed';

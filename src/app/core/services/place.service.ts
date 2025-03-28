@@ -28,5 +28,10 @@ export class PlaceService {
     getAllTypes(): Observable<PlaceType[]> {
       return this.http.get<PlaceType[]>(this.apiUrlTypes);
     }
+
+    deletePlace(id: string) {
+      return this.http.delete(`${this.apiUrl}/${id}`, { responseType: 'text' });
+    }
+
     
 }

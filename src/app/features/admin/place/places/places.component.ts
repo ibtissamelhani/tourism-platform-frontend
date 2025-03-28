@@ -6,6 +6,7 @@ import { PlaceService } from '../../../../core/services/place.service';
 import { CommonModule } from '@angular/common';
 import { TableComponent } from "../../../../component/table/table.component";
 import { RouterLink } from '@angular/router';
+import { ToastService } from '../../../../core/services/toast.service';
 
 @Component({
   selector: 'app-places',
@@ -32,6 +33,7 @@ import { RouterLink } from '@angular/router';
           [data]="places.content"
           [columns]="columns"
           [itemsPerPage]="places.size"
+          (delete)="onDeletePlace($event)"
         ></app-table>
   </ng-container>
   `,
@@ -47,9 +49,24 @@ export class PlacesComponent implements OnInit {
     { key: 'type', label: 'Type' } 
   ];
 
-  constructor(private placeService: PlaceService) {}
+  constructor(private placeService: PlaceService, private toastService: ToastService) {}
 
   ngOnInit(): void {
     this.places$ = this.placeService.getAllPlaces();
+  }
+
+  onDeletePlace(id: string): void {
+    if (confirm('Are you sure you want to delete this place?')) {
+      this.placeService.deletePlace(id).subscribe({
+        next: (res) => {
+          this.toastService.success('Success', res);
+          this.places$ = this.placeService.getAllPlaces(); 
+        },
+        error: (err) => {
+          const msg = err.error?.message || err.error || 'Failed to delete place';
+          this.toastService.error('Error', msg);
+        }
+      });
+    }
   }
 }
