@@ -11,6 +11,7 @@ import { CreateActivityComponent } from './features/admin/activity/create-activi
 import { CategoriesComponent } from './features/admin/categories/categories.component';
 import { PlacesComponent } from './features/admin/place/places/places.component';
 import { ContactComponent } from './pages/contact/contact.component';
+import { CreatePlaceComponent } from './features/admin/place/create-place/create-place.component';
 
 export const routes: Routes = [
 
@@ -30,6 +31,7 @@ export const routes: Routes = [
       {path:'create-activity', component:CreateActivityComponent},
       {path:'categories', component:CategoriesComponent},
       {path:'places', component:PlacesComponent},
+      {path:'create-place', component:CreatePlaceComponent},
     ]
   },
 ];

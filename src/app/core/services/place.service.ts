@@ -3,7 +3,7 @@ import { API_BASE_URL } from '../constants/constants';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Page } from '../models/Page';
-import { PlaceResponse } from '../models/Place';
+import { PlaceRequest, PlaceResponse, PlaceType } from '../models/Place';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +11,7 @@ import { PlaceResponse } from '../models/Place';
 export class PlaceService {
 
     private apiUrl = `${API_BASE_URL}/places`;
+    private apiUrlTypes = `${API_BASE_URL}/types`;
   
     constructor(private http: HttpClient) {}
 
@@ -18,6 +19,14 @@ export class PlaceService {
       return this.http.get<Page<PlaceResponse>>( this.apiUrl, {
         params: { page, size }
       });
+    }
+
+    createPlace(placeRequest: PlaceRequest): Observable<PlaceResponse> {
+      return this.http.post<PlaceResponse>(this.apiUrl, placeRequest);
+    }
+
+    getAllTypes(): Observable<PlaceType[]> {
+      return this.http.get<PlaceType[]>(this.apiUrlTypes);
     }
     
 }

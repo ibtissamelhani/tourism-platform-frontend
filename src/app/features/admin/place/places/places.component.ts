@@ -5,21 +5,35 @@ import { PlaceResponse } from '../../../../core/models/Place';
 import { PlaceService } from '../../../../core/services/place.service';
 import { CommonModule } from '@angular/common';
 import { TableComponent } from "../../../../component/table/table.component";
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-places',
   imports: [
     CommonModule,
-    TableComponent
+    TableComponent,
+    RouterLink
 ],
   template: `
+   <div class="sm:flex sm:items-center sm:justify-between mb-4">
+        <h2 class="text-lg font-medium text-gray-800 dark:text-white">List of Places</h2>
+        <button 
+        routerLink="/admin/create-place"
+        class="flex items-center justify-center w-1/2 px-5 py-2 text-sm tracking-wide font-bold text-white transition-colors duration-200 bg-yellow-500 rounded-lg shrink-0 sm:w-auto gap-x-2 hover:bg-yellow-600 dark:hover:bg-yellow-500 dark:bg-yellow-600">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+
+                <span>Add new Place</span>
+        </button>
+  </div>
   <ng-container *ngIf="places$ | async as places">
         <app-table
           [data]="places.content"
           [columns]="columns"
           [itemsPerPage]="places.size"
         ></app-table>
-      </ng-container>
+  </ng-container>
   `,
   styles: ``
 })
@@ -30,7 +44,7 @@ export class PlacesComponent implements OnInit {
     { key: 'name', label: 'Name' },
     { key: 'address', label: 'Address' },
     { key: 'city', label: 'City' },
-    { key: 'type.name', label: 'Type' } 
+    { key: 'type', label: 'Type' } 
   ];
 
   constructor(private placeService: PlaceService) {}
