@@ -126,10 +126,10 @@ export class LoginComponent {
         const userRole = this.authService.getUserRole();
         if (userRole === 'ROLE_ADMIN') {
           this.router.navigate(['/admin/dashboard']);
-        } else if (userRole === 'ROLE_') {
-          this.router.navigate(['/landing']);
-        } else if (userRole === 'ROLE_JURY') {
-          this.router.navigate(['/jury']);
+        } else if (userRole === 'ROLE_TOURIST') {
+          this.router.navigate(['/']);
+        } else if (userRole === 'ROLE_GUIDE') {
+          this.router.navigate(['/']);
         } else {
           this.errorMessage = 'Unknown role. Access denied.';
         }

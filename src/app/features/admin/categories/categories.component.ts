@@ -16,7 +16,11 @@ import { ToastService } from '../../../core/services/toast.service';
   <div class="sm:flex sm:items-center sm:justify-between mb-4">
         <h2 class="text-lg font-medium text-gray-800 dark:text-white">List of categories</h2>
         <!-- Modal toggle -->
-        <button data-modal-target="authentication-modal" data-modal-toggle="authentication-modal" class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
+        <button data-modal-target="authentication-modal" data-modal-toggle="authentication-modal" 
+        class="flex items-center justify-center w-1/2 px-5 py-2 text-sm tracking-wide font-bold text-white transition-colors duration-200 bg-yellow-500 rounded-lg shrink-0 sm:w-auto gap-x-2 hover:bg-yellow-600 dark:hover:bg-yellow-500 dark:bg-yellow-600">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
           add new category
         </button>
         <!-- Main modal -->
@@ -79,7 +83,6 @@ export class CategoriesComponent{
   categories$: Observable<Page<Category>>;
   columns = [
     { key: 'name', label: 'Category Name', sortable: true },
-    { key: 'actions', label: 'Actions' }
   ];
 
   categoryForm: FormGroup;
@@ -115,6 +118,7 @@ export class CategoriesComponent{
       this.categoryService.deleteCategory(id).subscribe({
         next: (res) => {
           this.toastService.success('Success', res);
+          this.categories$ = this.categoryService.getAll();
         },
         error: (err) => {
           const msg = err.error?.message || err.error || 'Delete failed';

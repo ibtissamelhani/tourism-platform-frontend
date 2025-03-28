@@ -10,4 +10,10 @@ export interface PlaceResponse {
     id: string;
     name: string;
   }
-  
+
+  export interface PlaceRequest {
+    name: string;
+    address: string;
+    city: string;
+    typeId: string;
+  }
