@@ -83,7 +83,6 @@ export class CategoriesComponent{
   categories$: Observable<Page<Category>>;
   columns = [
     { key: 'name', label: 'Category Name', sortable: true },
-    { key: 'actions', label: 'Actions' }
   ];
 
   categoryForm: FormGroup;

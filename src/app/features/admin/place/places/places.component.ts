@@ -46,7 +46,7 @@ export class PlacesComponent implements OnInit {
     { key: 'name', label: 'Name' },
     { key: 'address', label: 'Address' },
     { key: 'city', label: 'City' },
-    { key: 'type', label: 'Type' } 
+    { key: 'type', label: 'Type' } ,
   ];
 
   constructor(private placeService: PlaceService, private toastService: ToastService) {}
