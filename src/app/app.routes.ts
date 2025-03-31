@@ -12,6 +12,7 @@ import { CategoriesComponent } from './features/admin/categories/categories.comp
 import { PlacesComponent } from './features/admin/place/places/places.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { CreatePlaceComponent } from './features/admin/place/create-place/create-place.component';
+import { PlaceUpdateComponent } from './features/admin/place/place-update/place-update.component';
 
 export const routes: Routes = [
 
@@ -32,6 +33,7 @@ export const routes: Routes = [
       {path:'categories', component:CategoriesComponent},
       {path:'places', component:PlacesComponent},
       {path:'create-place', component:CreatePlaceComponent},
+      { path: 'places/edit/:id', component: PlaceUpdateComponent },
     ]
   },
 ];

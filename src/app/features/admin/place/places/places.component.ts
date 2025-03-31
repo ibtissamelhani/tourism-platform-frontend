@@ -5,7 +5,7 @@ import { PlaceResponse } from '../../../../core/models/Place';
 import { PlaceService } from '../../../../core/services/place.service';
 import { CommonModule } from '@angular/common';
 import { TableComponent } from "../../../../component/table/table.component";
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { ToastService } from '../../../../core/services/toast.service';
 
 @Component({
@@ -34,6 +34,7 @@ import { ToastService } from '../../../../core/services/toast.service';
           [columns]="columns"
           [itemsPerPage]="places.size"
           (delete)="onDeletePlace($event)"
+          (edit)="onEditPlace($event)"
         ></app-table>
   </ng-container>
   `,
@@ -47,9 +48,10 @@ export class PlacesComponent implements OnInit {
     { key: 'address', label: 'Address' },
     { key: 'city', label: 'City' },
     { key: 'type', label: 'Type' } ,
+    { key: 'actions', label: 'Actions' }
   ];
 
-  constructor(private placeService: PlaceService, private toastService: ToastService) {}
+  constructor(private placeService: PlaceService, private toastService: ToastService ,private router: Router) {}
 
   ngOnInit(): void {
     this.places$ = this.placeService.getAllPlaces();
@@ -68,5 +70,9 @@ export class PlacesComponent implements OnInit {
         }
       });
     }
+  }
+
+  onEditPlace(id: string): void {
+    this.router.navigate(['/admin/places/edit', id]);
   }
 }
