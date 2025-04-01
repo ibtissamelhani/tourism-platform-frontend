@@ -149,13 +149,10 @@ export class TableComponent implements OnInit {
   ngOnInit() {
     this.totalPages = Math.ceil(this.data.length / this.itemsPerPage);
     
-    // Initialisation du tri et de l'icône de tri
     this.sortColumn = (column: TableColumn) => {
-      // Logique de tri à implémenter
     };
 
     this.getSortIcon = (column: TableColumn) => {
-      // Logique d'affichage de l'icône de tri
       return '▼'; // Exemple simple
     };
   }
@@ -184,12 +181,10 @@ export class TableComponent implements OnInit {
     const pageNumbers: (number | string)[] = [];
 
     if (totalPages <= 7) {
-      // Si peu de pages, afficher toutes les pages
       for (let i = 1; i <= totalPages; i++) {
         pageNumbers.push(i);
       }
     } else {
-      // Stratégie pour afficher les pages avec des points de suspension
       if (currentPage <= 4) {
         pageNumbers.push(1, 2, 3, 4, 5, '...', totalPages);
       } else if (currentPage >= totalPages - 3) {
@@ -201,4 +196,5 @@ export class TableComponent implements OnInit {
 
     return pageNumbers;
   }
+  
 }

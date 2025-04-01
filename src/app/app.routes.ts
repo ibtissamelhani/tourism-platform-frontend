@@ -13,6 +13,9 @@ import { PlacesComponent } from './features/admin/place/places/places.component'
 import { ContactComponent } from './pages/contact/contact.component';
 import { CreatePlaceComponent } from './features/admin/place/create-place/create-place.component';
 import { PlaceUpdateComponent } from './features/admin/place/place-update/place-update.component';
+import { UsersComponent } from './features/admin/user/users/users.component';
+import { UserEditComponent } from './features/admin/user/user-edit/user-edit.component';
+import { UserAddComponent } from './features/admin/user/user-add/user-add.component';
 
 export const routes: Routes = [
 
@@ -34,6 +37,9 @@ export const routes: Routes = [
       {path:'places', component:PlacesComponent},
       {path:'create-place', component:CreatePlaceComponent},
       { path: 'places/edit/:id', component: PlaceUpdateComponent },
+      { path: 'users', component: UsersComponent },
+      { path: 'users/edit/:id', component: UserEditComponent },
+      { path: 'users/add', component: UserAddComponent },
     ]
   },
 ];
