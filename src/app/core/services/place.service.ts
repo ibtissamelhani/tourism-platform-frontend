@@ -33,5 +33,13 @@ export class PlaceService {
       return this.http.delete(`${this.apiUrl}/${id}`, { responseType: 'text' });
     }
 
+    getPlaceById(id: string): Observable<PlaceResponse> {
+      return this.http.get<PlaceResponse>(`${this.apiUrl}/${id}`);
+    }
+
+    updatePlace(id: string, placeRequest: PlaceRequest): Observable<PlaceResponse> {
+      return this.http.put<PlaceResponse>(`${this.apiUrl}/${id}`, placeRequest);
+    }
+
     
 }

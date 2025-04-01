@@ -12,6 +12,12 @@ import { CategoriesComponent } from './features/admin/categories/categories.comp
 import { PlacesComponent } from './features/admin/place/places/places.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { CreatePlaceComponent } from './features/admin/place/create-place/create-place.component';
+import { PlaceUpdateComponent } from './features/admin/place/place-update/place-update.component';
+import { UsersComponent } from './features/admin/user/users/users.component';
+import { UserEditComponent } from './features/admin/user/user-edit/user-edit.component';
+import { UserAddComponent } from './features/admin/user/user-add/user-add.component';
+import { UpdateActivityComponent } from './features/admin/activity/update-activity/update-activity.component';
+import { ProfileComponent } from './features/tourist/profile/profile.component';
 
 export const routes: Routes = [
 
@@ -29,9 +35,17 @@ export const routes: Routes = [
       {path:'dashboard', component:DashboardComponent},
       {path:'activities', component:ActivitiesComponent},
       {path:'create-activity', component:CreateActivityComponent},
+      {path:'edit-activity/:id', component:UpdateActivityComponent},
       {path:'categories', component:CategoriesComponent},
       {path:'places', component:PlacesComponent},
       {path:'create-place', component:CreatePlaceComponent},
+      { path: 'places/edit/:id', component: PlaceUpdateComponent },
+      { path: 'users', component: UsersComponent },
+      { path: 'users/edit/:id', component: UserEditComponent },
+      { path: 'users/add', component: UserAddComponent },
+
     ]
   },
+  { path: 'profile', component: ProfileComponent }
+
 ];

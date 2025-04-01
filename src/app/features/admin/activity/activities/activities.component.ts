@@ -5,7 +5,8 @@ import { Observable } from 'rxjs';
 import { ActivityService } from '../../../../core/services/activity.service';
 import { ActivityResponse } from '../../../../core/models/Activity';
 import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { ToastService } from '../../../../core/services/toast.service';
 
 @Component({
   selector: 'app-activities',
@@ -30,13 +31,15 @@ import { RouterLink } from '@angular/router';
     *ngIf="activities$ | async as activities"
     [data]="activities.content"
     [columns]="columns"
+    (delete)="handleDelete($event)"
+    (edit)="handleEdit($event)"
     [itemsPerPage]="activities.size"
   ></app-table>
 </div>`,
   styles: ``
 })
-export class ActivitiesComponent {
-  activities$: Observable<Page<ActivityResponse>>;
+export class ActivitiesComponent implements OnInit {
+  activities$!: Observable<Page<ActivityResponse>>;
 
   columns = [
     { key: 'name', label: 'Name' },
@@ -49,7 +52,33 @@ export class ActivitiesComponent {
     { key: 'place', label: 'Place' },
   ];
 
-  constructor(private activityService: ActivityService) {
+  constructor(private activityService: ActivityService, private toast: ToastService, private router: Router) {
+    
+  }
+
+  ngOnInit(): void {
+    this.fetchActivities();
+  }
+
+  fetchActivities() {
     this.activities$ = this.activityService.getActivities();
+  }
+
+  handleDelete(id: string) {
+    if (confirm('Are you sure you want to delete this activity?')) {
+      this.activityService.deleteActivity(id).subscribe({
+        next: () => {
+          this.toast.success('Deleted', 'Activity deleted successfully.');
+          this.fetchActivities(); 
+        },
+        error: () => {
+          this.toast.error('Error', 'Failed to delete activity.');
+        }
+      });
+    }
+  }
+
+  handleEdit(id: string) {
+    this.router.navigate(['/admin/edit-activity', id]);
   }
 }
