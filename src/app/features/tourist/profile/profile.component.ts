@@ -3,14 +3,22 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { UserService } from '../../../core/services/user.service';
 import { ToastService } from '../../../core/services/toast.service';
-import { UserResponse } from '../../../core/models/User';
+import { UpdateUser, UserResponse } from '../../../core/models/User';
+import { AuthService } from '../../../core/services/auth.service';
+import { NavbarComponent } from "../../../shared/navbar/navbar.component";
 
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, NavbarComponent],
   template: `
-    <div class="max-w-xl mx-auto mt-10 bg-white p-8 shadow-md rounded-lg">
+  <app-navbar/>
+  <div class="h-screen p-8  bg-blue-900/15">
+  <div class="text-center mb-12 mt-16">
+        <h1 class="text-4xl font-bold text-blue-900 mb-4">Profile Management</h1>
+        <div class="w-24 h-1 bg-gradient-to-r from-blue-900 to-yellow-600 mx-auto mb-6"></div>
+    </div>
+    <div class="max-w-xl mx-auto mt-16 bg-white p-8 shadow-md rounded-lg">
       <h2 class="text-2xl font-semibold text-gray-700 mb-6 text-center">
         My Profile
       </h2>
@@ -115,50 +123,60 @@ import { UserResponse } from '../../../core/models/User';
         Loading profile...
       </div>
     </div>
+  </div>
   `,
   styles: ``,
 })
 export class ProfileComponent implements OnInit {
   profileForm!: FormGroup;
   loading = true;
+  userId!: string;
 
   constructor(
     private fb: FormBuilder,
     private userService: UserService,
-    private toast: ToastService
+    private toast: ToastService,
+    private authService: AuthService
   ) {}
 
+
+
   ngOnInit(): void {
-    this.userService.getCurrentUser().subscribe({
-      next: (user: UserResponse) => {
-        this.profileForm = this.fb.group({
-          firstName: [user.firstName, Validators.required],
-          lastName: [user.lastName, Validators.required],
-          email: [user.email, [Validators.required, Validators.email]],
-          phoneNumber: [user.phoneNumber, [
-            Validators.required,
-            Validators.pattern(/^\+?[0-9]{10,15}$/)
-          ]],
-        });
-        this.loading = false;
-      },
-      error: () => {
-        this.toast.error('Error', 'Failed to load user data');
-        this.loading = false;
-      }
-    });
+    this.userId = this.authService.getCurrentUserId()!;
+    if (this.userId) {
+      this.userService.getUserById(this.userId).subscribe({
+        next: (user: UserResponse) => {
+          this.loading = false;
+          this.profileForm = this.fb.group({
+            firstName: [user.firstName, Validators.required],
+            lastName: [user.lastName, Validators.required],
+            email: [user.email, [Validators.required, Validators.email]],
+            phoneNumber: [user.phoneNumber, [
+              Validators.pattern(/^\+?[0-9]{10,15}$/)
+            ]]
+          });
+        },
+        error: (err) => {
+          this.toast.error('Failed to load user:', err);
+        }
+      });
+    }
   }
 
-  onSubmit() {
-    if (this.profileForm.invalid) {
-      this.profileForm.markAllAsTouched();
-      return;
+  onSubmit(): void {
+    if (this.profileForm.valid) {
+      const data: Partial<UpdateUser> = this.profileForm.value;
+      this.userService.updateUser(this.userId, data).subscribe({
+        next: () => {
+          this.toast.success('success','Profile updated successfully!');
+          this.profileForm.reset();
+        },
+        error: (err) => {
+          console.error('Failed to update profile:', err);
+          this.toast.error('error','Failed to update profile!');
+        }
+      });
     }
-
-    this.userService.updateUser(this.profileForm.value).subscribe({
-      next: () => this.toast.success('Success', 'Profile updated successfully'),
-      error: () => this.toast.error('Error', 'Update failed')
-    });
   }
 }
 

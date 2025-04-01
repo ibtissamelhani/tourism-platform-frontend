@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { AuthService } from '../../core/services/auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -44,15 +45,25 @@ import { CommonModule } from '@angular/common';
               <a href="#" class="block px-4 py-2 hover:bg-blue-50">العربية</a>
             </div>
           </details>
-          
           <button 
+          *ngIf="isAuthenticated()" 
+            routerLink="/profile" 
+            routerLinkActive="bg-yellow-500"
+            class="bg-transparent border border-white/60 hover:bg-white/10 text-white px-3 py-1 lg:px-4 lg:py-2 rounded-full transition-colors duration-300 flex items-center text-sm lg:text-base">
+            <span class="material-symbols-outlined mr-1">account_circle</span>
+            Profile
+          </button>
+          <button 
+          *ngIf="!isAuthenticated()"
             routerLink="/authentication/login" 
             class="bg-transparent border border-white/60 hover:bg-white/10 text-white px-3 py-1 lg:px-4 lg:py-2 rounded-full transition-colors duration-300 flex items-center text-sm lg:text-base">
             <span class="material-symbols-outlined mr-1">account_circle</span>
             Sign In
           </button>
           
-          <button        
+          
+          <button 
+          *ngIf="!isAuthenticated()"       
             routerLink="/authentication/register"  
             class="bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-1 lg:px-4 lg:py-2 rounded-full transition-colors duration-300 flex items-center text-sm lg:text-base">
             <span class="material-symbols-outlined mr-1">add_circle</span> Sign Up
@@ -96,4 +107,10 @@ import { CommonModule } from '@angular/common';
 })
 export class NavbarComponent {
   isMenuOpen = false;
+
+  constructor(private authService: AuthService) {}
+
+  isAuthenticated(): boolean {
+    return this.authService.isAuthenticated();
+  }
 }

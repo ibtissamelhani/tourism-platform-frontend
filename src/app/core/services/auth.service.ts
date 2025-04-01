@@ -97,14 +97,27 @@ export class AuthService {
     } else if (error.status === 403) {
       errorMessage = 'You do not have permission to access this resource.';
     } else if (error.error instanceof ErrorEvent) {
-      // Client-side error
       errorMessage = `Client Error: ${error.error.message}`;
     } else if (error.error?.message) {
-      // Server returned an error message
       errorMessage = error.error.message;
     }
     
     console.error('Authentication error:', error);
     return throwError(() => new Error(errorMessage));
   }
+
+
+  getCurrentUserId(): string | null {
+    const token = this.getToken();
+    if (!token) return null;
+  
+    try {
+      const decodedToken: any = jwtDecode(token);
+      return decodedToken.id || null;
+    } catch (error) {
+      console.error('Error decoding token:', error);
+      return null;
+    }
+  }
+  
 }

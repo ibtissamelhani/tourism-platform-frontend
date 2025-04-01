@@ -17,6 +17,7 @@ import { UsersComponent } from './features/admin/user/users/users.component';
 import { UserEditComponent } from './features/admin/user/user-edit/user-edit.component';
 import { UserAddComponent } from './features/admin/user/user-add/user-add.component';
 import { UpdateActivityComponent } from './features/admin/activity/update-activity/update-activity.component';
+import { ProfileComponent } from './features/tourist/profile/profile.component';
 
 export const routes: Routes = [
 
@@ -42,6 +43,9 @@ export const routes: Routes = [
       { path: 'users', component: UsersComponent },
       { path: 'users/edit/:id', component: UserEditComponent },
       { path: 'users/add', component: UserAddComponent },
+
     ]
   },
+  { path: 'profile', component: ProfileComponent }
+
 ];
