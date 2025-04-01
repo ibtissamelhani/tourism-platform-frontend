@@ -16,6 +16,7 @@ import { PlaceUpdateComponent } from './features/admin/place/place-update/place-
 import { UsersComponent } from './features/admin/user/users/users.component';
 import { UserEditComponent } from './features/admin/user/user-edit/user-edit.component';
 import { UserAddComponent } from './features/admin/user/user-add/user-add.component';
+import { UpdateActivityComponent } from './features/admin/activity/update-activity/update-activity.component';
 
 export const routes: Routes = [
 
@@ -33,6 +34,7 @@ export const routes: Routes = [
       {path:'dashboard', component:DashboardComponent},
       {path:'activities', component:ActivitiesComponent},
       {path:'create-activity', component:CreateActivityComponent},
+      {path:'edit-activity/:id', component:UpdateActivityComponent},
       {path:'categories', component:CategoriesComponent},
       {path:'places', component:PlacesComponent},
       {path:'create-place', component:CreatePlaceComponent},

@@ -27,6 +27,10 @@ export class UserService {
     return this.http.get<Page<UserResponse>>(this.apiUrl, { params });
   }
 
+  getAllGuides(): Observable<UserResponse[]> {
+    return this.http.get<UserResponse[]>(`${this.apiUrl}/guides`);
+  }
+
   getUserById(id: string): Observable<UserResponse> {
     return this.http.get<UserResponse>(`${this.apiUrl}/${id}`);
   }

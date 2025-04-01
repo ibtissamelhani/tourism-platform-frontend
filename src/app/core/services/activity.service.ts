@@ -30,4 +30,15 @@ export class ActivityService{
   createActivity(activityRequest: ActivityRequest): Observable<ActivityResponse> {
     return this.http.post<ActivityResponse>(this.apiUrl, activityRequest);
   }
+
+  deleteActivity(id: string): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/${id}`,{ responseType: 'text' });
+  }
+
+  updateActivity(id: string, activityData: any): Observable<any> {
+    return this.http.put(`${this.apiUrl}/${id}`, activityData);
+  }
+  getActivityById(id: string): Observable<any> {
+    return this.http.get(`${this.apiUrl}/${id}`);
+  }
 }
