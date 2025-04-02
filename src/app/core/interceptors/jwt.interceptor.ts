@@ -17,7 +17,7 @@ let modifiedReq = req.clone({
     .set('Accept', 'application/json')
 });
 
-const isAuthRoute = req.url.includes('/auth/authenticate') || req.url.includes('/auth/register');
+const isAuthRoute = req.url.includes('/auth/authenticate') || req.url.includes('/auth/register') || req.url.includes('/api/v1/activities/search');
 
 if (token && !isAuthRoute) {
   modifiedReq = modifiedReq.clone({

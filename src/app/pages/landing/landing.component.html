@@ -23,37 +23,35 @@
             </p>
           </div>
           <div class="bg-white/50 rounded-lg shadow-lg p-6 mx-auto max-w-full">
-            <div class="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-5 gap-4">
-              <!-- Activity search field -->
+            <form [formGroup]="activitySearchForm" (ngSubmit)="searchActivities()" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+              <!-- Name -->
               <div class="relative">
                 <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                   </svg>
                 </span>
-                <input
-                  type="text"
-                  placeholder="Activity name"
-                  class="w-full pl-10 pr-4 py-3 bg-white border border-gray-200 rounded-md focus:outline-none focus:border-blue-500"
-                />
+                <input 
+                  type="text" 
+                  formControlName="name" 
+                  placeholder="Activity name" 
+                  class="w-full pl-10 pr-4 py-3 bg-white border border-gray-200 rounded-md focus:outline-none focus:border-blue-500 shadow-sm"
+                >
               </div>
-          
-              <!-- Category dropdown -->
+            
+              <!-- Category -->
               <div class="relative">
                 <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" />
                   </svg>
                 </span>
-                <select
-                  class="w-full pl-10 pr-10 py-3 bg-white border border-gray-200 rounded-md appearance-none focus:outline-none focus:border-blue-500 cursor-pointer"
+                <select 
+                  formControlName="categoryId" 
+                  class="w-full pl-10 pr-10 py-3 bg-white border border-gray-200 rounded-md appearance-none focus:outline-none focus:border-blue-500 shadow-sm cursor-pointer"
                 >
-                  <option>Category</option>
-                  <option>Adventure</option>
-                  <option>Cultural</option>
-                  <option>Culinary</option>
-                  <option>Relaxation</option>
-                  <option>Shopping</option>
+                  <option value="">Category</option>
+                  <option *ngFor="let cat of categories" [value]="cat.id">{{ cat.name }}</option>
                 </select>
                 <span class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none">
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -61,39 +59,40 @@
                   </svg>
                 </span>
               </div>
-          
-              <!-- Start date picker -->
+            
+              <!-- Start Date -->
               <div class="relative">
                 <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                   </svg>
                 </span>
-                <input
-                  type="date"
-                  placeholder="jj/mm/aaaa"
-                  class="w-full pl-10 pr-4 py-3 bg-white border border-gray-200 rounded-md focus:outline-none focus:border-blue-500"
-                />
+                <input 
+                  type="date" 
+                  formControlName="startDate" 
+                  class="w-full pl-10 pr-4 py-3 bg-white border border-gray-200 rounded-md focus:outline-none focus:border-blue-500 shadow-sm"
+                >
               </div>
-          
-              <!-- End date picker -->
+            
+              <!-- End Date -->
               <div class="relative">
                 <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                   </svg>
                 </span>
-                <input
-                  type="date"
-                  placeholder="jj/mm/aaaa"
-                  class="w-full pl-10 pr-4 py-3 bg-white border border-gray-200 rounded-md focus:outline-none focus:border-blue-500"
-                />
+                <input 
+                  type="date" 
+                  formControlName="endDate" 
+                  class="w-full pl-10 pr-4 py-3 bg-white border border-gray-200 rounded-md focus:outline-none focus:border-blue-500 shadow-sm"
+                >
               </div>
-          
-              <!-- Search button -->
+            
+              <!-- Search Button -->
               <div class="relative">
-                <button
-                  class="w-full py-3 px-6 bg-yellow-500 hover:bg-yellow-600 text-white font-medium rounded-md transition-colors duration-300 flex items-center justify-center"
+                <button 
+                  type="submit"
+                  class="w-full py-3 px-6 bg-yellow-500 hover:bg-yellow-600 text-white font-medium rounded-md transition-colors duration-300 flex items-center justify-center shadow-sm"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
@@ -101,7 +100,7 @@
                   Search
                 </button>
               </div>
-            </div>
+            </form>
           </div>
         </div>
       </header>
