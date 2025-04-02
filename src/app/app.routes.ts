@@ -20,13 +20,19 @@ import { UpdateActivityComponent } from './features/admin/activity/update-activi
 import { ProfileComponent } from './features/tourist/profile/profile.component';
 import { ActivityComponent } from './pages/activity/activity.component';
 import { ReservationsComponent } from './features/admin/reservation/reservations/reservations.component';
-
+import { ActivitiesComponent as activities} from './pages/activities/activities.component'
+import { authGuard } from './core/guards/auth.guard';
+import { adminGuard } from './core/guards/role.guard';
+import { ForbiddenComponent } from './pages/error/forbidden/forbidden.component';
+import { NotFoundComponent } from './pages/error/not-found/not-found.component';
 export const routes: Routes = [
 
   {path:'', component:LandingComponent},
+  { path: 'forbidden', component: ForbiddenComponent },
   {path:'about', component:AboutComponent},
   {path:'contact', component:ContactComponent},
-  {path:'activity/:id', component:ActivityComponent},
+  {path:'activity/:id', component:ActivityComponent, canActivate: [authGuard]},
+  {path:'activities', component:activities},
   {path:'authentication', component:AuthTemplateComponent,
   children:[
     {path:'login', component:LoginComponent},
@@ -47,8 +53,10 @@ export const routes: Routes = [
       {path: 'users/edit/:id', component: UserEditComponent },
       {path: 'users/add', component: UserAddComponent },
       {path: 'reservations', component: ReservationsComponent },
-    ]
+    ],
+    canActivate: [authGuard, adminGuard]
   },
-  { path: 'profile', component: ProfileComponent }
+  { path: 'profile', component: ProfileComponent, canActivate: [authGuard] },
+  { path: '**', component: NotFoundComponent },
 
 ];
