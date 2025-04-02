@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
   <footer class="bg-blue-900 text-white px-8 py-12">
   <div class="grid grid-cols-1 items-end md:grid-cols-3 gap-8 mb-12">
       <h3 class="text-xl font-bold mb-4 flex items-center"> <span
-          class="material-symbols-outlined mr-2 text-yellow-400">explore</span> MoroccoExplore </h3>
+          class="material-symbols-outlined mr-2 text-yellow-400">explore</span> DadesAdventures </h3>
       <p class="text-blue-100 mb-4">Your gateway to authentic Moroccan experiences. We offer carefully curated
         activities to help you discover the true essence of Morocco.</p>
       <div class="flex items-end justify-end  gap-4"> 

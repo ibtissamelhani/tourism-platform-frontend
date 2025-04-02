@@ -18,12 +18,15 @@ import { UserEditComponent } from './features/admin/user/user-edit/user-edit.com
 import { UserAddComponent } from './features/admin/user/user-add/user-add.component';
 import { UpdateActivityComponent } from './features/admin/activity/update-activity/update-activity.component';
 import { ProfileComponent } from './features/tourist/profile/profile.component';
+import { ActivityComponent } from './pages/activity/activity.component';
+import { ReservationsComponent } from './features/admin/reservation/reservations/reservations.component';
 
 export const routes: Routes = [
 
   {path:'', component:LandingComponent},
   {path:'about', component:AboutComponent},
   {path:'contact', component:ContactComponent},
+  {path:'activity/:id', component:ActivityComponent},
   {path:'authentication', component:AuthTemplateComponent,
   children:[
     {path:'login', component:LoginComponent},
@@ -39,11 +42,11 @@ export const routes: Routes = [
       {path:'categories', component:CategoriesComponent},
       {path:'places', component:PlacesComponent},
       {path:'create-place', component:CreatePlaceComponent},
-      { path: 'places/edit/:id', component: PlaceUpdateComponent },
-      { path: 'users', component: UsersComponent },
-      { path: 'users/edit/:id', component: UserEditComponent },
-      { path: 'users/add', component: UserAddComponent },
-
+      {path: 'places/edit/:id', component: PlaceUpdateComponent },
+      {path: 'users', component: UsersComponent },
+      {path: 'users/edit/:id', component: UserEditComponent },
+      {path: 'users/add', component: UserAddComponent },
+      {path: 'reservations', component: ReservationsComponent },
     ]
   },
   { path: 'profile', component: ProfileComponent }

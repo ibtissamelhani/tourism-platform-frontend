@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../core/services/auth.service';
+import { LougoutButtonComponent } from "../../component/lougout-button/lougout-button.component";
 
 @Component({
   selector: 'app-navbar',
@@ -9,8 +10,9 @@ import { AuthService } from '../../core/services/auth.service';
   imports: [
     RouterLink,
     RouterLinkActive,
-    CommonModule
-  ],
+    CommonModule,
+    LougoutButtonComponent
+],
   template: `
     <nav class="absolute bg-blue-900/40 top-0 left-0 right-0 z-20 px-4 md:px-8 py-2">
       <div class="flex justify-between items-center">
@@ -28,7 +30,6 @@ import { AuthService } from '../../core/services/auth.service';
         <!-- Desktop navigation -->
         <div class="hidden md:flex items-center gap-4 lg:gap-8">
           <a href="#" routerLinkActive="bg-yellow-500 px-4 py-2 rounded-full" class="text-white hover:text-yellow-400 transition-colors">Home</a>
-          <a href="#" class="text-white hover:text-yellow-500 transition-colors">Destinations</a>
           <a href="#" class="text-white hover:text-yellow-400 transition-colors">Activities</a>
           <a routerLink="/about" routerLinkActive="bg-yellow-500 px-4 py-2 rounded-full" class="text-white hover:text-yellow-400 transition-colors">About Us</a>
           <a routerLink="/contact" routerLinkActive="bg-yellow-500 px-4 py-2 rounded-full" class="text-white hover:text-yellow-400 transition-colors">Contact</a>
@@ -52,6 +53,13 @@ import { AuthService } from '../../core/services/auth.service';
             class="bg-transparent border border-white/60 hover:bg-white/10 text-white px-3 py-1 lg:px-4 lg:py-2 rounded-full transition-colors duration-300 flex items-center text-sm lg:text-base">
             <span class="material-symbols-outlined mr-1">account_circle</span>
             Profile
+          </button>
+          <button 
+          *ngIf="isAuthenticated()" 
+            routerLink="/profile" 
+            routerLinkActive="bg-yellow-500"
+            class="bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-1 lg:px-4 lg:py-2 rounded-full transition-colors duration-300 flex items-center text-sm lg:text-base">
+            <app-lougout-button/>
           </button>
           <button 
           *ngIf="!isAuthenticated()"
