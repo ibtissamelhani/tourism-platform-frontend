@@ -20,13 +20,14 @@ import { UpdateActivityComponent } from './features/admin/activity/update-activi
 import { ProfileComponent } from './features/tourist/profile/profile.component';
 import { ActivityComponent } from './pages/activity/activity.component';
 import { ReservationsComponent } from './features/admin/reservation/reservations/reservations.component';
-
+import { ActivitiesComponent as activities} from './pages/activities/activities.component'
 export const routes: Routes = [
 
   {path:'', component:LandingComponent},
   {path:'about', component:AboutComponent},
   {path:'contact', component:ContactComponent},
   {path:'activity/:id', component:ActivityComponent},
+  {path:'activities', component:activities},
   {path:'authentication', component:AuthTemplateComponent,
   children:[
     {path:'login', component:LoginComponent},

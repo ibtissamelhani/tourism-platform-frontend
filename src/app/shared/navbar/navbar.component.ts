@@ -30,7 +30,7 @@ import { LougoutButtonComponent } from "../../component/lougout-button/lougout-b
         <!-- Desktop navigation -->
         <div class="hidden md:flex items-center gap-4 lg:gap-8">
           <a href="#" routerLinkActive="bg-yellow-500 px-4 py-2 rounded-full" class="text-white hover:text-yellow-400 transition-colors">Home</a>
-          <a href="#" class="text-white hover:text-yellow-400 transition-colors">Activities</a>
+          <a routerLink="/activities" routerLinkActive="bg-yellow-500 px-4 py-2 rounded-full" class="text-white hover:text-yellow-400 transition-colors">Activities</a>
           <a routerLink="/about" routerLinkActive="bg-yellow-500 px-4 py-2 rounded-full" class="text-white hover:text-yellow-400 transition-colors">About Us</a>
           <a routerLink="/contact" routerLinkActive="bg-yellow-500 px-4 py-2 rounded-full" class="text-white hover:text-yellow-400 transition-colors">Contact</a>
           
