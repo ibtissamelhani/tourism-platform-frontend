@@ -35,4 +35,11 @@ export interface ActivityResponse {
       ACTIVE = 'ACTIVE',
       CANCELED = 'CANCELED'
   }
+
+  export interface ActivitySearchDTO {
+    name?: string;
+    categoryId?: string;
+    startDate?: string;
+    endDate?: string;
+  }
   

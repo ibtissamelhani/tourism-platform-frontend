@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { API_BASE_URL } from '../constants/constants';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Page } from '../models/Page';
-import { ActivityRequest, ActivityResponse } from '../models/Activity';
+import { ActivityRequest, ActivityResponse, ActivitySearchDTO } from '../models/Activity';
 
 @Injectable({
   providedIn: 'root'
@@ -29,5 +29,24 @@ export class ActivityService{
 
   createActivity(activityRequest: ActivityRequest): Observable<ActivityResponse> {
     return this.http.post<ActivityResponse>(this.apiUrl, activityRequest);
+  }
+
+  deleteActivity(id: string): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/${id}`,{ responseType: 'text' });
+  }
+
+  updateActivity(id: string, activityData: any): Observable<any> {
+    return this.http.put(`${this.apiUrl}/${id}`, activityData);
+  }
+  getActivityById(id: string): Observable<any> {
+    return this.http.get(`${this.apiUrl}/${id}`);
+  }
+
+  
+  searchActivities(searchDTO: any, page: number = 0, size: number = 6): Observable<Page<ActivityResponse>> {
+    return this.http.post<Page<ActivityResponse>>(
+      `${this.apiUrl}/search?page=${page}&size=${size}`,
+      searchDTO
+    );
   }
 }
