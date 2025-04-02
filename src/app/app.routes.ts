@@ -19,6 +19,7 @@ import { UserAddComponent } from './features/admin/user/user-add/user-add.compon
 import { UpdateActivityComponent } from './features/admin/activity/update-activity/update-activity.component';
 import { ProfileComponent } from './features/tourist/profile/profile.component';
 import { ActivityComponent } from './pages/activity/activity.component';
+import { ReservationsComponent } from './features/admin/reservation/reservations/reservations.component';
 
 export const routes: Routes = [
 
@@ -41,11 +42,11 @@ export const routes: Routes = [
       {path:'categories', component:CategoriesComponent},
       {path:'places', component:PlacesComponent},
       {path:'create-place', component:CreatePlaceComponent},
-      { path: 'places/edit/:id', component: PlaceUpdateComponent },
-      { path: 'users', component: UsersComponent },
-      { path: 'users/edit/:id', component: UserEditComponent },
-      { path: 'users/add', component: UserAddComponent },
-
+      {path: 'places/edit/:id', component: PlaceUpdateComponent },
+      {path: 'users', component: UsersComponent },
+      {path: 'users/edit/:id', component: UserEditComponent },
+      {path: 'users/add', component: UserAddComponent },
+      {path: 'reservations', component: ReservationsComponent },
     ]
   },
   { path: 'profile', component: ProfileComponent }
